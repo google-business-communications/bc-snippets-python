@@ -29,6 +29,7 @@ from businesscommunications.businesscommunications_v1_messages import (
 
 # Edit the values below:
 BRAND_ID = 'EDIT_HERE'
+AGENT_ID = 'EDIT_HERE'
 PLACE_ID = 'EDIT_HERE'
 SCOPES = ['https://www.googleapis.com/auth/businesscommunications']
 SERVICE_ACCOUNT_FILE = './service_account_key.json'
@@ -41,10 +42,11 @@ client = BusinesscommunicationsV1(credentials=credentials)
 locations_service = BusinesscommunicationsV1.BrandsLocationsService(client)
 
 brand_name = 'brands/' + BRAND_ID
+agent_name = 'brands/' + BRAND_ID + 'agents/' + AGENT_ID
 
 location = locations_service.Create(BusinesscommunicationsBrandsLocationsCreateRequest(
         location=Location(
-            agent='My first agent',
+            agent=agent_name,
             placeId=PLACE_ID,
             defaultLocale='en'
         ),
